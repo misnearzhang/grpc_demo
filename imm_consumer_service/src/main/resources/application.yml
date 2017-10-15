@@ -1,0 +1,58 @@
+
+# application properties
+app:
+  http:
+    encoding.charset: UTF-8
+    encoding.enable: true
+    encoding.force: true
+  aop:
+    proxy-target-class: true
+
+  application:
+     name: springbootstart
+#  cache:
+#    type: generic
+
+
+# LOGGING
+logging:
+  level:
+    org.springframework: INFO
+    cn.vpclub.spring.boot: INFO
+    cn.vpclub.cmbs: INFO
+  pattern:
+    console: "%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{64})  - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: logs/application.log
+
+cors:
+  mappings: /**
+  allowedOrigins:
+#undertow com.misnearzhang.config optimize
+server:
+  undertow:
+    io-threads: 2
+    worker-threads: 100
+  port: 8089
+
+grpc:
+  client:
+    grpc-server:
+      server-host: localhost
+      serverPort: 3000
+      enable-keep-alive: true
+      keep-alive-delay: 5 # seconds
+
+spring.profiles.active: test,localhost
+spring:
+  devtools:
+    livereload:
+      enabled: false
+    restart:
+      trigger-file: .java
+
+
+
+
+
+

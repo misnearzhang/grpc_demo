@@ -1,0 +1,31 @@
+syntax = "proto3";
+package grpcdl;
+option java_package = "com.misnearzhang.protoc";
+option java_outer_classname = "BaseMessage";
+
+message Request {
+	int64 id=1;
+	type type=2;
+	string data=3;
+	int64  time=4;
+}
+
+message Response {
+	int64 id=1;
+	status status=2;
+	string data=3;
+}
+
+enum status {
+	OK = 0 ;
+	ERROR = 1 ;
+}
+enum type {
+	SYSTEM = 0;
+	USER = 1;
+}
+service RpcService{
+    rpc getUserDate(Request) returns (Response){};
+	rpc makeOrder(Request) returns (Response){};
+
+}
